@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Objects;
 import java.util.regex.Pattern;
 
 @RestController
@@ -19,8 +20,8 @@ public class MainController {
 
     @RequestMapping("/")
     public ResponseEntity<Object> addUser(
-//            @Valid @RequestBody
-                                              User user) {
+//            @Valid
+            @RequestBody User user) {
 
 //        if(user.getName() == null) {
 //            return ResponseEntity.badRequest().body("Name is required");
@@ -42,6 +43,11 @@ public class MainController {
 //            return ResponseEntity.badRequest().body("Email must be at least 3 characters");
 //        } else if(!Pattern.compile("^(.+)@(\\S+) $").matcher(user.getEmail()).matches()) {
 //            return ResponseEntity.badRequest().body("Invalid email");
+//        }
+
+//        if(user.getName().equals("James")) {
+//            LOG.error("James user Detected!");
+//            throw new CustomValidationException("No James Allowed!");
 //        }
 
         LOG.info("Adding user: {}", user);
